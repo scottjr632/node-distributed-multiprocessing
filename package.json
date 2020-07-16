@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.5",
+    "async": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "google-protobuf": "^3.12.2",
+    "grpc": "^1.24.3",
+    "lodash": "^4.17.19",
+    "minimist": "^1.2.5",
+    "node-multiprocess": "^0.0.2"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.3",
+    "@types/google-protobuf": "^3.7.2",
+    "@types/lodash": "^4.14.157",
+    "@types/minimist": "^1.2.0",
+    "grpc-tools": "^1.9.0",
+    "grpc_tools_node_protoc_ts": "^4.1.0",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.6"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf src/gen/* && rm -rf dist/*",
+    "build": "tsc",
+    "start:client": "node dist/greeter_client.js",
+    "start:server": "node dist/greeter_server.js",
+    "gen": "npm run gen:js && npm run gen:types",
+    "gen:js": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/gen --grpc_out=./src/gen --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ./proto ./proto/*.proto",
+    "gen:types": "protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./src/gen -I ./proto ./proto/*.proto"
+  }
+}

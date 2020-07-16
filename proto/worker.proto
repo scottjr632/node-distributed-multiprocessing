@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.scottjr632.node-distributed-multi";
+option java_outer_classname = "WorkerProto";
+option objc_class_prefix = "WP";
+
+package worker;
+
+service Worker {
+  rpc AddJob (AddJobRequest) returns (AddJobReply) {}
+}
+
+message AddJobRequest {
+    string fn = 1;
+    repeated string args = 2;
+}
+
+message AddJobReply {
+    string result = 1;
+}
