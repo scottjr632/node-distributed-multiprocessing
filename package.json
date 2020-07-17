@@ -1,7 +1,7 @@
 {
-  "name": "node-multiprocess",
-  "version": "0.0.2",
-  "description": "Easy multiprocessing in nodejs",
+  "name": "node-distributed-multiprocessing",
+  "version": "0.0.1",
+  "description": "Easy distributed multiprocessing in nodejs",
   "author": "Scott Richardson <scottjr632@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -38,6 +38,29 @@
     "start:server": "node dist/greeter_server.js",
     "gen": "npm run gen:js && npm run gen:types",
     "gen:js": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/gen --grpc_out=./src/gen --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ./proto ./proto/*.proto",
-    "gen:types": "protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./src/gen -I ./proto ./proto/*.proto"
-  }
+    "gen:types": "protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./src/gen -I ./proto ./proto/*.proto",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run style:check",
+    "preversion": "npm run style:check",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottjr632/node-distributed-multiprocessing.git"
+  },
+  "keywords": [
+    "multiprocessing",
+    "distributed",
+    "nodejs",
+    "easy",
+    "simple"
+  ],
+  "bugs": {
+    "url": "https://github.com/scottjr632/node-distributed-multiprocessing/issues"
+  },
+  "homepage": "https://github.com/scottjr632/node-distributed-multiprocessing#readme",
+  "files": [
+    "dist/**/*"
+  ]
 }
