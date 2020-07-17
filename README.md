@@ -1,5 +1,8 @@
 Easy Node Distributed Multiprocessing
 ===
+[![Version](https://img.shields.io/npm/v/node-distributed-multiprocessing.svg)](https://npmjs.org/package/node-distributed-multiprocessing)
+[![Downloads/week](https://img.shields.io/npm/dw/node-distributed-multiprocessing.svg)](https://npmjs.org/package/node-distributed-multiprocessing)
+[![License](https://img.shields.io/npm/l/node-distributed-multiprocessing.svg)](https://github.com/scottjr632/node-distributed-multiprocessing/blob/master/package.json)
 <!-- toc -->
 - [About](#about)
 - [Getting started](#getting-started)
