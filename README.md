@@ -7,7 +7,7 @@ Easy Node Distributed Multiprocessing
     - [Using the client](#using-the-client)
 <!-- tocstop -->
 # About
-`node-distributed-multiprocess` aims at making distrubuted multiprocessing easy for anyone. Because NodeJS is single threaded, tasks that take up cpu can block any other progress of the program. This could cause your server to not accept any new requests. Multiprocessing in NodeJS solves this issue by handing off tasks to another process to complete, freeing up the main thread to handle io tasks.
+`node-distributed-multiprocessing` aims at making distributed multiprocessing easy for anyone. Because NodeJS is single threaded, tasks that take up cpu can block any other progress of the program. This could cause your server to not accept any new requests. Multiprocessing in NodeJS solves this issue by handing off tasks to another process to complete, freeing up the main thread to handle io tasks.
 
 This library has two parts; `server` and `client`. Server runs on each node that you want to have work on any tasks. Whereas client is a library that is used to connect to the nodes and dispatch tasks.
 
@@ -30,15 +30,15 @@ The port can be changed by setting the `SERVER_PORT` environment variable. The s
 ## Using the client
 The client is what dispatches jobs to the nodes. The client can be import from the client module.
 ```typescript
-import DistribuitedPool from node-distributed-multiprocessing/client
+import DistributedPool from node-distributed-multiprocessing/client
 // or
-import { DistribuitedPool } from node-distributed-multiprocessing/client
+import { DistributedPool } from node-distributed-multiprocessing/client
 ```
 To create the DistributedPool you have to pass in an array of URIs to your nodes where the `server` is running.
 ```typescript
-const pool = new DistribuitedPool(['localhost:50051', 'localhost:11223']);
+const pool = new DistributedPool(['localhost:50051', 'localhost:11223']);
 // or
-const pool = new DistribuitedPool([
+const pool = new DistributedPool([
     {
         host: 'localhost',
         port: '50051',
@@ -49,7 +49,7 @@ const pool = new DistribuitedPool([
     },
 ]);
 ```
-After the server has been created the `addJob` method dispatches the supplied function to one of the nodes.
+After the server has been created, the `addJob` method dispatches the supplied function to one of the nodes.
 ```typescript
 function fib(n: number): number {
     if (n <= 1) return 1
